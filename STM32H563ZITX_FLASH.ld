@@ -175,6 +175,12 @@ SECTIONS
     . = ALIGN(8);
   } >RAM
 
+  .trace (NOLOAD) :
+  {
+    . = ALIGN(4);
+    *(.trace)
+  } >RAM
+
   /* Remove information from the compiler libraries */
   /DISCARD/ :
   {

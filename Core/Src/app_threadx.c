@@ -38,13 +38,13 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 TX_THREAD tx_app_thread;
 /* USER CODE BEGIN PV */
-
+#define TRACEX_BUFFER_SIZE (1024 * 64)
+__attribute__ ((section (".trace"))) unsigned char tracex_buffer[TRACEX_BUFFER_SIZE];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -82,6 +82,7 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   }
 
   /* USER CODE BEGIN App_ThreadX_Init */
+  tx_trace_enable(&tracex_buffer, TRACEX_BUFFER_SIZE, 32);
   /* USER CODE END App_ThreadX_Init */
 
   return ret;
